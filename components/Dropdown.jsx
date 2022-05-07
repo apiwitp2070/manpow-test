@@ -1,19 +1,25 @@
 import { Fragment, useState } from 'react'
 import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
+import { useAppContext } from '../provider/AppProvider'
 
-const sorting = [
-  { name: 'เรียงตามราคาจากน้อยไปมาก' },
-  { name: 'เรียงตามราคาจากมากไปน้อย' },
-  { name: 'เรียงตามตัวอักษรจาก A-Z' },
-  { name: 'เรียงตามตัวอักษรจาก Z-A' },
-]
-
-export default function Dropdown() {
+export default function Dropdown(
+) {
+  const sorting = [
+    { id: 1, name: 'เรียงตามราคาจากน้อยไปมาก' },
+    { id: 2, name: 'เรียงตามราคาจากมากไปน้อย' },
+    { id: 3, name: 'เรียงตามตัวอักษรจาก A-Z' },
+    { id: 4, name: 'เรียงตามตัวอักษรจาก Z-A' },
+  ]
   const [selected, setSelected] = useState(sorting[0])
+  const { value, setValue } = useAppContext()
+  
+  function handleClick(id) {
+    setValue(id)
+  }
 
   return (
-    <div className="md:w-64 mt-8 lg:mt-0">
+    <div className="z-50 md:w-64 mt-8 lg:mt-0">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-orange-300 sm:text-sm">
@@ -32,24 +38,25 @@ export default function Dropdown() {
             leaveTo="opacity-0"
           >
             <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-              {sorting.map((person, personIdx) => (
+              {sorting.map((item, itemIdx) => (
                 <Listbox.Option
-                  key={personIdx}
+                  key={itemIdx}
                   className={({ active }) =>
                     `relative cursor-default select-none py-2 pl-10 pr-4 ${
                       active ? 'bg-orange-100 text-orange-600' : 'text-gray-900'
                     }`
                   }
-                  value={person}
+                  value={item}
                 >
                   {({ selected }) => (
                     <>
                       <span
+                        onClick={() => handleClick(item.id)}
                         className={`block truncate ${
                           selected ? 'font-medium' : 'font-normal'
                         }`}
                       >
-                        {person.name}
+                        {item.name}
                       </span>
                       {selected ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
