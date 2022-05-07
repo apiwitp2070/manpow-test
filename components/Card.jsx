@@ -9,14 +9,17 @@ const Card = ({
   discount,
 }) => {
     return (
-      <div className="bg-white p-2">
+      <div className="bg-white p-2 hover:-translate-y-4 transition duration-300">
         <div className='relative'>
           <Image
             src={furniture}
           />
           {discount > 0 &&
-          <div className='absolute bottom-0 left-0 py-2 text-white text-sm bg-orange-500'>
-            ส่วนลด {discount} บาท
+          <div className="h-7 flex absolute bottom-1.5 left-0">
+            <div className='px-1 pt-1 text-white text-xs bg-orange-500'>
+              ส่วนลด {discount} บาท
+            </div>
+            <div className="triangle"></div>
           </div>
           }
         </div>
