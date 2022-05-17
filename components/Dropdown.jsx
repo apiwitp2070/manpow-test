@@ -3,8 +3,7 @@ import { Listbox, Transition } from '@headlessui/react'
 import { CheckIcon, SelectorIcon } from '@heroicons/react/solid'
 import { useAppContext } from '../provider/AppProvider'
 
-export default function Dropdown(
-) {
+export default function Dropdown() {
   const sorting = [
     { id: 1, name: 'เรียงตามราคาจากน้อยไปมาก' },
     { id: 2, name: 'เรียงตามราคาจากมากไปน้อย' },
@@ -13,7 +12,7 @@ export default function Dropdown(
   ]
   const [selected, setSelected] = useState(sorting[0])
   const { value, setValue } = useAppContext()
-  
+
   function handleClick(id) {
     setValue(id)
   }
