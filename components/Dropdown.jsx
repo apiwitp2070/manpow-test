@@ -9,6 +9,7 @@ export default function Dropdown() {
     { id: 2, name: 'เรียงตามราคาจากมากไปน้อย' },
     { id: 3, name: 'เรียงตามตัวอักษรจาก A-Z' },
     { id: 4, name: 'เรียงตามตัวอักษรจาก Z-A' },
+    { id: 5, name: 'เรัยงตามการลดราคา'}
   ]
   const [selected, setSelected] = useState(sorting[0])
   const { value, setValue } = useAppContext()

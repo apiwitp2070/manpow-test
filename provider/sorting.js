@@ -24,6 +24,8 @@ export default function handleSortData(value, setData) {
     case 4:
       setData(copyArray.sort((a, b) => b.name.localeCompare(a.name)))
       break
+    case 5:
+      setData(copyArray.sort((a, b) => b.discount - a.discount))
     default:
       break
   }
