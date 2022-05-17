@@ -4,7 +4,7 @@ import furniture from '../public/img/furniture.png'
 
 const Card = ({ name, description, price, discount }) => {
   return (
-    <div className="bg-white p-2 hover:-translate-y-4 transition duration-300">
+    <div className="bg-white p-2 lg:hover:-translate-y-4 transition duration-300">
       <div className="relative">
         <Image src={furniture} />
         {discount > 0 && (
