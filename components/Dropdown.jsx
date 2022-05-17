@@ -9,7 +9,7 @@ export default function Dropdown() {
     { id: 2, name: 'เรียงตามราคาจากมากไปน้อย' },
     { id: 3, name: 'เรียงตามตัวอักษรจาก A-Z' },
     { id: 4, name: 'เรียงตามตัวอักษรจาก Z-A' },
-    { id: 5, name: 'เรัยงตามการลดราคา'}
+    { id: 5, name: 'เรียงตามการลดราคา'}
   ]
   const [selected, setSelected] = useState(sorting[0])
   const { value, setValue } = useAppContext()
@@ -58,7 +58,7 @@ export default function Dropdown() {
                       >
                         {item.name}
                       </span>
-                      {selected ? (
+                      {value == item.id ? (
                         <span className="absolute inset-y-0 left-0 flex items-center pl-3 text-amber-600">
                           <CheckIcon className="h-5 w-5" aria-hidden="true" />
                         </span>
